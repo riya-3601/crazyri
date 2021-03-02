@@ -1,14 +1,23 @@
 
     <!-- Start Categories  -->
-    <div class="categories-shop">
+
+    <div class="categories-shop" >
         <div class="container">
+          <mat-label>Category</mat-label>
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                      <img class="image-fluid"  src="images/t-shirts-img.jpg" alt="" />
-                        <a class=" btn hvr-hover" href="#">cat name</a>
-                    </div>
-                </div>
+
+                <!-- <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12"> -->
+                    <!-- <div class="shop-cat-box" > -->
+
+                      <button mat-button color="primary" *ngFor="let item of obj" [value]="item.category_id" (click)="onCategoryClick(item)">
+                        {{item.category_name}}
+                      </button>
+                      <!-- <p >
+
+                      </p> -->
+                        <!-- <a class=" btn hvr-hover" href="#"></a> -->
+                    <!-- </div> -->
+                <!-- </div> -->
 
             </div>
         </div>
@@ -42,9 +51,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
         </div>
     </div>
     <!-- End Products  -->
