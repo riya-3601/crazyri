@@ -1,6 +1,6 @@
-<div class="products-box">
+<div class="products-box" *ngFor="let item of obj;let i=index">
   <div class="container">
-
+    <form [formGroup]="bfsform">
       <div class="row special-list">
           <div  class="col-lg-3 col-md-6 special-grid best-seller">
               <div class="products-single fix">
@@ -8,7 +8,7 @@
                       <div class="type-lb">
                           <p class="sale">Sale</p>
                       </div>
-                      <img src="../../assets/images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                      <img src="../../assets/images/booktitle.jfif" class="img-fluid" alt="Image">
                       <div class="mask-icon">
                           <ul>
                               <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -19,12 +19,15 @@
                       </div>
                   </div>
                   <div class="why-text">
-                      <h4>Lorem ipsum dolor sit amet</h4>
-                      <h5> $7.79</h5>
+                    <div class="why-text">
+                      <h4>{{item.book_title}}</h4>
+                      <h5>{{item.book_price |currency:'INR'}}</h5>
+                      <h5>{{item.book_author}}</h5>
+                  </div>
                   </div>
               </div>
           </div>
       </div>
-
+    </form>
   </div>
 </div>

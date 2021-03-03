@@ -23,19 +23,6 @@ export class BookforsaleComponent implements OnInit {
       this.obj=data;
       console.log(this.obj);
     });
-
-
-    this.bfsform=new FormGroup({
-      book_id:new FormControl(null),
-      book_isbn:new FormControl(null),
-      book_title : new FormControl(null),
-      book_author:new FormControl(null),
-      book_price:new FormControl(null),
-      book_publisher:new FormControl(null),
-      book_ratings:new FormControl(null),
-      book_image:new FormControl(null),
-      fk_category_id:new FormControl(null),
-    });
   }
 
 }
