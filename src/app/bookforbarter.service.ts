@@ -6,7 +6,7 @@ import { environment } from "../environments/environment";
   providedIn: 'root'
 })
 export class BookforbarterService {
-  url:string='http://localhost:3000/bookforbartercustomer/';
+  url:string='http://localhost:3000/bookforbarter/';
   constructor(private _http:HttpClient) { }
   getAllBookforbarterCustomer(){
     return this._http.get(this.url);
