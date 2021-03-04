@@ -24,6 +24,8 @@ import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { CategoryComponent } from './category/category.component';
 import { BookforsaleComponent } from './bookforsale/bookforsale.component';
 import { BookforsaledetailsComponent } from './bookforsale/bookforsaledetails/bookforsaledetails.component';
+import { BookforbarterComponent } from './bookforbarter/bookforbarter.component';
+import { BookforbarterdetailsComponent } from './bookforbarter/bookforbarterdetails/bookforbarterdetails.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { BookforsaledetailsComponent } from './bookforsale/bookforsaledetails/bo
     LoginComponent,
     CategoryComponent,
     BookforsaleComponent,
-    BookforsaledetailsComponent
+    BookforsaledetailsComponent,
+    BookforbarterComponent,
+    BookforbarterdetailsComponent
   ],
   imports: [
     BrowserModule,
