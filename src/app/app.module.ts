@@ -23,6 +23,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { CategoryComponent } from './category/category.component';
 import { BookforsaleComponent } from './bookforsale/bookforsale.component';
+import { BookforbarterComponent } from './bookforbarter/bookforbarter.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { BookforsaleComponent } from './bookforsale/bookforsale.component';
     FooterComponent,
     LoginComponent,
     CategoryComponent,
-    BookforsaleComponent
+    BookforsaleComponent,
+    BookforbarterComponent
   ],
   imports: [
     BrowserModule,
