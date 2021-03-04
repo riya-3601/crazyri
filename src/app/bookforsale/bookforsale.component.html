@@ -1,11 +1,10 @@
-<div class="products-box" *ngFor="let item of obj;let i=index">
-  <div class="container">
-    <form [formGroup]="bfsform">
-      <div class="row special-list">
-          <div  class="col-lg-3 col-md-6 special-grid best-seller">
-              <div class="products-single fix">
-                  <div class="box-img-hover">
-                      <div class="type-lb">
+<div class="products-box"  >
+  <div class="container" >
+      <div class="row special-list" >
+          <div  class="col-lg-3 col-md-6 special-grid best-seller" *ngFor="let item of obj;let i=index" >
+              <div class="products-single fix" >
+                  <div class="box-img-hover" >
+                      <div class="type-lb" *ngFor="let item of obj;let i=index">
                           <p class="sale">Sale</p>
                       </div>
                       <img src="../../assets/images/booktitle.jfif" class="img-fluid" alt="Image">
@@ -28,6 +27,5 @@
               </div>
           </div>
       </div>
-    </form>
   </div>
 </div>
