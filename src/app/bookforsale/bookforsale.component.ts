@@ -22,5 +22,9 @@ export class BookforsaleComponent implements OnInit {
       console.log(this.obj);
     });
   }
+  onbookClick(item:Bfs){
+    console.log(item.book_id);
+    this._router.navigate(['/bookdetail',item.book_id]);
+  }
 
 }
