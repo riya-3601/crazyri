@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Bfs } from "./bfs";
 import { BookforsaleService } from "../bookforsale.service";
 import { Router } from "@angular/router";
-import { FormGroup,FormControl } from "@angular//forms";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
 export class BookforsaleComponent implements OnInit {
   obj:Bfs[]=[];
   category_id:number=1;
-  bfsform:FormGroup;
   constructor(private _bfsdata:BookforsaleService,private _router:Router,private _actRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
