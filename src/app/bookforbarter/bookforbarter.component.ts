@@ -20,6 +20,7 @@ export class BookforbarterComponent implements OnInit {
   ngOnInit(): void {
     this._bookbartdata.getAllBookforbarterCustomer().subscribe((data:Bookbart[])=>{
       this.obj=data;
+      this.dataSource.data=data;
       console.log(this.obj);
     });
   }

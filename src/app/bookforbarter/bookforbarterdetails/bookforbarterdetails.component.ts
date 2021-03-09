@@ -23,4 +23,5 @@ export class BookforbarterdetailsComponent implements OnInit {
     });
   }
 
+
 }
