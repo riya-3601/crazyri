@@ -6,9 +6,9 @@ import { BookforsaledetailsComponent } from './bookforsale/bookforsaledetails/bo
 import { DemoComponent } from './demo/demo.component';
 const arr:Routes=[
   {path:'',component:DemoComponent},
-  {path:'books/:category_id',component:BookforsaleComponent},
-  {path:'bookdetail/:book_id',component:BookforsaledetailsComponent},
+  {path:'bookforsale/:category_id',component:BookforsaleComponent},
+  {path:'bookforsaledetail/:book_id',component:BookforsaledetailsComponent},
   {path:'bookforbarter',component:BookforbarterComponent},
-  {path:'bookforbarterdetails/:bookbarter_id',component:BookforbarterdetailsComponent}
+  {path:'bookforbarterdetails/:bookbarter_id',component:BookforbarterdetailsComponent},
 ];
 export const routingarr=RouterModule.forRoot(arr);

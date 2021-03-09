@@ -24,7 +24,7 @@ export class DemoComponent implements OnInit {
   }
   onCategoryClick(item:Cat){
     console.log(item.category_id);
-    this._router.navigate(['/books',item.category_id]);
+    this._router.navigate(['/bookforsale',item.category_id]);
 
   }
 
