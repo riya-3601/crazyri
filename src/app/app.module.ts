@@ -23,6 +23,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { CategoryComponent } from './category/category.component';
 import { BookforsaleComponent } from './bookforsale/bookforsale.component';
+import { BookforsaledetailsComponent } from './bookforsale/bookforsaledetails/bookforsaledetails.component';
 import { BookforbarterComponent } from './bookforbarter/bookforbarter.component';
 import { BookforbarterdetailsComponent } from './bookforbarter/bookforbarterdetails/bookforbarterdetails.component';
 import { BookforbartercartpopupComponent } from './bookforbarter/bookforbartercartpopup/bookforbartercartpopup.component';
@@ -37,6 +38,7 @@ import { BookforbartercartpopupComponent } from './bookforbarter/bookforbarterca
     LoginComponent,
     CategoryComponent,
     BookforsaleComponent,
+    BookforsaledetailsComponent,
     BookforbarterComponent,
     BookforbarterdetailsComponent,
     BookforbartercartpopupComponent
