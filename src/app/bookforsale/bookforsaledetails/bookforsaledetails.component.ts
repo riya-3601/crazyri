@@ -11,6 +11,7 @@ import { BookforsaledatailsService } from 'src/app/bookforsaledatails.service';
 export class BookforsaledetailsComponent implements OnInit {
   book_id:number;
   obj:Bfs[];
+  cart:Bfs[]=[];
   constructor(private _bookdata:BookforsaleService,private _actRoute:ActivatedRoute,private _bookforsaledet:BookforsaledatailsService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,13 @@ export class BookforsaledetailsComponent implements OnInit {
       console.log(data);
     });
   }
+  onAddCart(item){
+    confirm("Are you sure you want to add this item in cart?");{
+      this.cart.push(item);
+      console.log(this.cart);
+      alert("Successfully added");
+    }
 
+  }
 
 }
