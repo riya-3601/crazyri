@@ -29,7 +29,5 @@ export class BookforsaledetailsComponent implements OnInit {
       console.log(this.cart);
       alert("Successfully added");
     }
-
   }
-
 }
