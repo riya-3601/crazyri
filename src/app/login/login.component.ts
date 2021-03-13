@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
      this._logdata.getAdmin(this.login.value).subscribe((data:Cust[])=>{
       this.obj=data;
       if(data.length==1){
-        this._router.navigate(['/home']);
+        this._router.navigate(['/']);
       }
       else{
           this.message='Username or Password is Wrong';
