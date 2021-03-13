@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Bfs } from "src/app/bookforsale/bfs";
 import { BookforsaleService } from "src/app/bookforsale.service";
 import { BookforsaledatailsService } from 'src/app/bookforsaledatails.service';
+import { ShelfcartService } from 'src/app/shelfcart.service';
 @Component({
   selector: 'app-bookforsaledetails',
   templateUrl: './bookforsaledetails.component.html',
@@ -11,8 +12,8 @@ import { BookforsaledatailsService } from 'src/app/bookforsaledatails.service';
 export class BookforsaledetailsComponent implements OnInit {
   book_id:number;
   obj:Bfs[];
-  cart:Bfs[]=[];
-  constructor(private _bookdata:BookforsaleService,private _actRoute:ActivatedRoute,private _bookforsaledet:BookforsaledatailsService) { }
+
+  constructor(private _bookdata:BookforsaleService,private _actRoute:ActivatedRoute,private _bookforsaledet:BookforsaledatailsService,private _shelfcartdata:ShelfcartService) { }
 
   ngOnInit(): void {
     this.book_id=this._actRoute.snapshot.params['book_id'];
@@ -24,10 +25,23 @@ export class BookforsaledetailsComponent implements OnInit {
     });
   }
   onAddCart(item){
-    confirm("Are you sure you want to add this item in cart?");{
-      this.cart.push(item);
-      console.log(this.cart);
-      alert("Successfully added");
-    }
+    console.log(item);
+    this._shelfcartdata.addincart(item).subscribe((data:any)=>{
+      if(data.affectedRows==1)
+       {
+         alert('Data inserted succesfully');
+
+       }
+       else{
+         alert('Something went wrong');
+         console.log(data);
+       }
+
+     },
+     function(err){
+       console.log(err);
+     });
+
+
   }
 }
