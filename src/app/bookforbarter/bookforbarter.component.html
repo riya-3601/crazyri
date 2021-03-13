@@ -6,8 +6,8 @@
               <div class="product-categori">
                   <div class="search-product">
                       <form action="#">
-                          <input (keyup)="applyFilter($event)" class="form-control" placeholder="Search here..." type="text"  #input >
-                          <button type="submit"> <i class="fa fa-search"></i> </button>
+                          <input  class="form-control" placeholder="Search here..." type="text"  #input >
+                          <button type="submit" (click)="onSearchClick(input)"> <i class="fa fa-search"></i> </button>
                       </form>
                   </div>
               </div>

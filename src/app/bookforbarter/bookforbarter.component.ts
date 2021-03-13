@@ -36,5 +36,8 @@ export class BookforbarterComponent implements OnInit {
     //   this.dataSource.paginator.firstPage();
     // }
   }
+  onSearchClick(event){
+    console.log(event);
+  }
 
 }

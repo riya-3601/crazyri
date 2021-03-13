@@ -13,11 +13,13 @@
 					<label for="pass" class="label">Password</label>
 					<input id="pass" type="password" class="input" data-type="password" formControlName="login_password">
 				</div>
-        <p class="alert alert-danger" *ngIf="message!=''">{{message}}</p>
+        <p class="message" *ngIf="message!=''">{{message}}</p>
+        <br>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>
 					<label for="check"><span class="icon"></span> Keep me Signed in</label>
 				</div>
+
 				<div class="group">
 					<button type="submit" class="button" value="Sign In">Login</button>
 				</div>
