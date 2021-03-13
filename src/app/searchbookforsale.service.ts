@@ -5,11 +5,13 @@ import { environment } from "../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class BookforsaleService {
-  url:string='http://localhost:3000/bookforsalebycatid/';
+export class SearchbookforsaleService {
+
+  url:string='http://localhost:3000/searchbook/';
 
   constructor(private _http:HttpClient) { }
-  getBookByCategoryID(id:number){
-    return this._http.get(this.url+id);
+  searchBookbyISBN(search:string,id:number){
+    return this._http.get(this.url+search+"/"+id);
   }
+
 }
