@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { BookforsaleService } from "../bookforsale.service";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
+import { SearchbookforsaleService } from '../searchbookforsale.service';
 
 @Component({
   selector: 'app-bookforsale',
@@ -13,8 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 export class BookforsaleComponent implements OnInit {
   obj:Bfs[]=[];
   category_id:number=1;
+  column:string[];
+  searchcolumn: string[] = ['isbn','title','author','publisher'];
   dataSource: MatTableDataSource<Bfs>;
-  constructor(private _bfsdata:BookforsaleService,private _router:Router,private _actRoute:ActivatedRoute) {
+  constructor(private _bfsdata:BookforsaleService,private _searchdata:SearchbookforsaleService,private _router:Router,private _actRoute:ActivatedRoute) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -26,9 +29,11 @@ export class BookforsaleComponent implements OnInit {
       console.log(this.obj);
     });
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  onSearchClick(input,column){
+    //console.log(input,column);
+    this._searchdata.searchBookbyISBN(input,column).subscribe((data:any)=>{
+      console.log(data);
+    });
   }
   onbookClick(item:Bfs){
     console.log(item.book_id);

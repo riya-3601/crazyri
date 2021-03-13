@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormControlName, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { Cust } from './cust';
@@ -12,6 +12,7 @@ import { Cust } from './cust';
 })
 export class LoginComponent implements OnInit {
   login:FormGroup;
+  signinform:FormGroup;
   obj:Cust[];
   message:String;
   constructor(private _logdata:LoginService,private _router:Router) { }
@@ -21,6 +22,17 @@ export class LoginComponent implements OnInit {
       login_username:new FormControl(null,[Validators.required,Validators.email]),
       login_password:new FormControl(null,[Validators.required])
       });
+      this.signinform=new FormGroup({
+        signin_emailid:new FormControl(null,[Validators.required,Validators.email]),
+        signin_password:new FormControl(null,Validators.required),
+        signin_confirmpassword: new FormControl(null,Validators.required),
+        signin_username:new FormControl(null,Validators.required),
+        signin_gender:new FormControl(null,Validators.required),
+        signin_mobileno:new FormControl(null,[Validators.required,Validators.pattern('[0-9]*')]),
+
+      });
+
+
   }
 
   onsubmitClick(){
