@@ -6,12 +6,15 @@
 		<div class="login-form">
 			<div class="sign-in-htm">
 				<div class="group">
-					<label for="user" class="label">Username/Emailid</label>
-					<input id="user" type="text" class="input" formControlName="login_username">
+					<label for="user" class="label">Emailid</label>
+          <input id="user" type="text" class="input" formControlName="login_username">
+          <mat-error class="alert alert-danger" *ngIf="login.get('login_username').hasError('required') && !login.get('login_username').pristine"> Email ID is required</mat-error>
+          <mat-error class="alert alert-danger" *ngIf="login.get('login_username').hasError('email') && !login.get('login_username').pristine"> Enter Right form of email ID</mat-error>
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-					<input id="pass" type="password" class="input" data-type="password" formControlName="login_password">
+          <input id="pass" type="password" class="input" data-type="password" formControlName="login_password">
+          <mat-error class="alert alert-danger" *ngIf="login.get('login_password').hasError('required') && !login.get('login_password').pristine"> Password is required</mat-error>
 				</div>
         <p class="message" *ngIf="message!=''">{{message}}</p>
         <br>
