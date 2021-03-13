@@ -8,7 +8,7 @@ import { environment } from "../environments/environment";
 export class BookforsaleService {
   url:string='http://localhost:3000/bookforsale/';
   constructor(private _http:HttpClient) { }
-  getBookByCategoryID(){
-    return this._http.get(this.url);
+  getBookByCategoryID(id){
+    return this._http.get(this.url+id);
   }
 }

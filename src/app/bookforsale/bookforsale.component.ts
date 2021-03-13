@@ -21,7 +21,7 @@ export class BookforsaleComponent implements OnInit {
   ngOnInit(): void {
     this.category_id=this._actRoute.snapshot.params['category_id'];
     console.log(this.category_id);
-    this._bfsdata.getBookByCategoryID().subscribe((data:Bfs[])=>{
+    this._bfsdata.getBookByCategoryID(this.category_id).subscribe((data:Bfs[])=>{
       this.obj=data;
       console.log(this.obj);
     });
