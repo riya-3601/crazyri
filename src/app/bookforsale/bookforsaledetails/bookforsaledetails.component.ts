@@ -24,9 +24,9 @@ export class BookforsaledetailsComponent implements OnInit {
       console.log(data);
     });
   }
-  onAddCart(item){
-    console.log(item);
-    this._shelfcartdata.addincart(item).subscribe((data:any)=>{
+  onAddCart(item,input){
+    //console.log(input);
+    this._shelfcartdata.addincart(item,input).subscribe((data:any)=>{
       if(data.affectedRows==1)
        {
          alert('Data inserted succesfully');
@@ -41,7 +41,23 @@ export class BookforsaledetailsComponent implements OnInit {
      function(err){
        console.log(err);
      });
+  }
+  onAddShelf(item){
+    //console.log(input);
+    this._shelfcartdata.addinshelf(item).subscribe((data:any)=>{
+      if(data.affectedRows==1)
+       {
+         alert('Data inserted succesfully');
 
+       }
+       else{
+         alert('Something went wrong');
+         console.log(data);
+       }
 
+     },
+     function(err){
+       console.log(err);
+     });
   }
 }

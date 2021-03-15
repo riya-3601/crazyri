@@ -47,7 +47,7 @@
                                   <li>
                                       <div class="form-group quantity-box">
                                           <label class="control-label">Quantity</label>
-                                          <input class="form-control" value="0" min="0" max="20" type="number">
+                                          <input class="form-control" value="0" min="0" max="20" type="number" #input>
                                       </div>
                                   </li>
                               </ul>
@@ -56,8 +56,8 @@
 
                               <div class="add-to-btn">
                                   <div class="add-comp">
-                                      <a (click)="onAddCart(item)" class="btn hvr-hover" data-fancybox-close="" >Add to cart</a>
-                                      <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+                                      <a (click)="onAddCart(item,input.value)" class="btn hvr-hover" data-fancybox-close="" >Add to cart</a>
+                                      <a class="btn hvr-hover" (click)="onAddShelf(item)"><i class="fas fa-heart"></i> Add to Shelf</a>
 
                                   </div>
                                   <div class="share-bar">
