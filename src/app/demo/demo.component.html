@@ -1,8 +1,25 @@
+ <!--search-->
+ <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+  <mat-radio-group
+  aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="column">
+    <mat-radio-button class="example-radio-button" *ngFor="let col of searchcolumn" [value]="col">
+      {{col}}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div>{{column}}</div>
+  <div class="search-product">
+    <input  class="form-control" placeholder="Search here..." type="text"  #input >
+        <button (click)="onSearchClick(input.value,column)"> <i class="fa fa-search"></i> </button>
+  </div>
+ </div>
 
     <!-- Start Categories  -->
 
     <div class="categories-shop" >
         <div class="container">
+          <br>
           <mat-label>Category</mat-label>
             <div class="row">
 
