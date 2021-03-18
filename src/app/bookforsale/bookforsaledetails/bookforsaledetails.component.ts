@@ -51,6 +51,7 @@ export class BookforsaledetailsComponent implements OnInit {
     }
   }
   onAddShelf(item){
+    if(this.username!='' && this.username!=null){
      //console.log(input);
     this._shelfcartdata.addinshelf(item).subscribe((data:any)=>{
       if(data.affectedRows==1)
@@ -67,5 +68,9 @@ export class BookforsaledetailsComponent implements OnInit {
      function(err){
        console.log(err);
      });
+   }
+   else{
+    this._router.navigate(['/login']);
+    }
   }
 }
