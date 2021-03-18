@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Bfs } from "src/app/bookforsale/bfs";
 import { BookforsaleService } from "src/app/bookforsale.service";
 import { BookforsaledatailsService } from 'src/app/bookforsaledatails.service';
@@ -14,7 +14,7 @@ export class BookforsaledetailsComponent implements OnInit {
   book_id:number;
   obj:Bfs[];
 
-  constructor(private _bookdata:BookforsaleService,private _actRoute:ActivatedRoute,private _bookforsaledet:BookforsaledatailsService,private _shelfcartdata:ShelfcartService) { }
+  constructor(private _router:Router,private _bookdata:BookforsaleService,private _actRoute:ActivatedRoute,private _bookforsaledet:BookforsaledatailsService,private _shelfcartdata:ShelfcartService) { }
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username");
@@ -45,6 +45,9 @@ export class BookforsaledetailsComponent implements OnInit {
      function(err){
        console.log(err);
      });
+    }
+    else{
+      this._router.navigate(['/login']);
     }
   }
   onAddShelf(item){
