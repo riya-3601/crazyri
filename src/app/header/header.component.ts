@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   }
   onLogoutClick(){
     localStorage.removeItem("username");
+    console.log(this.username);
     alert('Are you sure you want to logout?');{
       this._router.navigate(['/']);
     }

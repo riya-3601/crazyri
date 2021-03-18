@@ -12,7 +12,7 @@ import { MyshelfComponent } from "./myshelf/myshelf.component";
 const arr:Routes=[
   {path:'',component:DemoComponent},
   {path:'bookforsale/:category_id',component:BookforsaleComponent},
-  {path:'bookforsaledetail/:book_id',component:BookforsaledetailsComponent},
+  {path:'bookforsaledetail/:book_id',component:BookforsaledetailsComponent,canActivate:[AuthguardService]},
   {path:'bookforbarter',component:BookforbarterComponent},
   {path:'bookforbarterdetails/:bookbarter_id',component:BookforbarterdetailsService},
   {path:'mycart',component:MycartComponent,canActivate:[AuthguardService]},

@@ -10,12 +10,14 @@ import { ShelfcartService } from 'src/app/shelfcart.service';
   styleUrls: ['./bookforsaledetails.component.css']
 })
 export class BookforsaledetailsComponent implements OnInit {
+  username:String;
   book_id:number;
   obj:Bfs[];
 
   constructor(private _bookdata:BookforsaleService,private _actRoute:ActivatedRoute,private _bookforsaledet:BookforsaledatailsService,private _shelfcartdata:ShelfcartService) { }
 
   ngOnInit(): void {
+    this.username=localStorage.getItem("username");
     this.book_id=this._actRoute.snapshot.params['book_id'];
     console.log(this.book_id);
 
@@ -25,6 +27,7 @@ export class BookforsaledetailsComponent implements OnInit {
     });
   }
   onAddCart(item,input){
+    if(this.username!='' && this.username!=null){
     //console.log(input);
     this._shelfcartdata.addincart(item,input).subscribe((data:any)=>{
       if(data.affectedRows==1)
@@ -38,12 +41,14 @@ export class BookforsaledetailsComponent implements OnInit {
        }
 
      },
+
      function(err){
        console.log(err);
      });
+    }
   }
   onAddShelf(item){
-    //console.log(input);
+     //console.log(input);
     this._shelfcartdata.addinshelf(item).subscribe((data:any)=>{
       if(data.affectedRows==1)
        {
