@@ -9,9 +9,9 @@ import { Cust } from 'src/app/login/cust';
 })
 export class LoginService {
 
-  url:string='http://localhost:3000/customerlogin/';
+  url:string='http://localhost:3000/login/';
   constructor(private _http:HttpClient) { }
-  getAdmin(obj:Cust){
+  getUser(obj:Cust){
     let body=JSON.stringify(obj);
     let head=new HttpHeaders().set(environment.headname,environment.headvalue);
     return this._http.post(this.url,body,{headers:head});

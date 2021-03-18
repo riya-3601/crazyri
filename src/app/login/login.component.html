@@ -19,6 +19,7 @@
           <mat-error class="alert alert-danger" *ngIf="login.get('login_password').hasError('required') && !login.get('login_password').pristine"> Password is required</mat-error>
 				</div>
         <p class="message" *ngIf="message!=''">{{message}}</p>
+
         <br>
 				<div class="group">
 					<input id="check" type="checkbox" class="check" checked>

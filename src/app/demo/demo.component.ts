@@ -13,12 +13,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./demo.component.css']
 })
 export class DemoComponent implements OnInit {
+  username:String;
   obj:Cat[]=[];
   column:string[];
   searchcolumn: string[] = ['isbn','title','author','publisher'];
   constructor(private _catdata:CategoryService,private _searchdata:SearchbookforsaleService,private _bookdata:BookforsaleService,private _router:Router,private _actRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.username=localStorage.getItem("username");
+    alert('Welcome '+this.username);
     this._catdata.getAllCategory().subscribe((data:Cat[])=>{
       console.log(data);
       this.obj=data;
