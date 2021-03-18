@@ -21,7 +21,7 @@ export class DemoComponent implements OnInit {
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username");
-    alert('Welcome '+this.username);
+    // alert('Welcome '+this.username);
     this._catdata.getAllCategory().subscribe((data:Cat[])=>{
       console.log(data);
       this.obj=data;
