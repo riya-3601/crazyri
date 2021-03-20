@@ -19,6 +19,7 @@
       <div class="row">
           <div class="col-lg-12">
               <div class="table-main table-responsive">
+                <form [formGroup]="quantity" (ngSubmit)="onUpdateCart()">
                   <table class="table">
                       <thead>
                           <tr>
@@ -43,7 +44,8 @@
                               <td class="price-pr">
                                   <p>{{item.book_price| currency:'INR'}}</p>
                               </td>
-                              <td class="quantity-box"><input value="item.shelfcart_quantity" type="number" size="4"  min="0" step="1" class="c-input-text qty text"></td>
+                              <td class="quantity-box"><input  formControlName="quan" type="number" size="4"  min="0" step="1" class="c-input-text qty text"></td>
+                              <!-- value="item.shelfcart_quantity" -->
                               <td class="total-pr">
                                   <p>{{item.book_price*item.shelfcart_quantity|currency:'INR'}}</p>
                               </td>
@@ -54,6 +56,12 @@
                               </td>
                       </tbody>
                   </table>
+                  <div class="col-lg-6 col-sm-6">
+                    <div class="update-box">
+                        <input value="Update Cart" type="submit">
+                    </div>
+                </div>
+                </form>
               </div>
           </div>
       </div>
@@ -69,11 +77,7 @@
                   </div>
               </div>
           </div>
-          <div class="col-lg-6 col-sm-6">
-              <div class="update-box">
-                  <input value="Update Cart" type="submit">
-              </div>
-          </div>
+
       </div>
 
       <div class="row my-5">
