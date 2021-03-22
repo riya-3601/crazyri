@@ -10,15 +10,17 @@ import { ShelfcartService } from '../shelfcart.service';
 })
 export class MycartComponent implements OnInit {
 obj:Bfs[];
+id:String;
 quantity:FormGroup;
   constructor(private _shelfcartdata:ShelfcartService) { }
 
   ngOnInit(): void {
+this.id=localStorage.getItem("id");
 this.quantity=new FormGroup({
   quan:new FormControl(null)
 });
 
-    this._shelfcartdata.getcart().subscribe((data:Bfs[])=>{
+    this._shelfcartdata.getcart(this.id).subscribe((data:Bfs[])=>{
       this.obj=data;
       console.log(this.obj);
     });

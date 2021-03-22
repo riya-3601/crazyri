@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
       if(data.length==1){
         if(this.obj[0].customer_type==1){
           localStorage.setItem("username",this.obj[0].customer_emailid);
+          localStorage.setItem("id",this.obj[0].customer_id+'');
           this._router.navigate(['/']);
         }
         else{

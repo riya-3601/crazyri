@@ -41,9 +41,9 @@
                   <table class="table">
                       <thead>
                           <tr>
-                              <th>Images</th>
-                              <th>Product Name</th>
-                              <th>Unit Price </th>
+                              <th>Image</th>
+                              <th>Book Name</th>
+                              <th>Price </th>
                               <th>Stock</th>
                               <th>Add Item</th>
                               <th>Remove</th>
@@ -62,9 +62,12 @@
                               <td class="price-pr">
                                   <p>{{item.book_price}}</p>
                               </td>
-                              <td class="quantity-box">{{item.book_status}}</td>
+                              <td class="price-pr">
+                                <p>{{item.book_status}}</p>
+                            </td>
+                              <!-- <td class="quantity-box">{{item.book_quantity}}</td> -->
                               <td class="add-pr">
-                                  <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                  <a class="btn hvr-hover"  (click)="onAddCartfromShelf(item)">Add to Cart</a>
                               </td>
                               <td class="remove-pr">
                                   <a href="#">

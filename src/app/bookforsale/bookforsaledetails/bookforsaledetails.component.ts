@@ -11,6 +11,7 @@ import { ShelfcartService } from 'src/app/shelfcart.service';
 })
 export class BookforsaledetailsComponent implements OnInit {
   username:String;
+  id:String;
   book_id:number;
   obj:Bfs[];
 
@@ -18,6 +19,7 @@ export class BookforsaledetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username");
+    this.id=localStorage.getItem("id");
     this.book_id=this._actRoute.snapshot.params['book_id'];
     console.log(this.book_id);
 
@@ -29,7 +31,7 @@ export class BookforsaledetailsComponent implements OnInit {
   onAddCart(item,input){
     if(this.username!='' && this.username!=null){
     //console.log(input);
-    this._shelfcartdata.addincart(item,input).subscribe((data:any)=>{
+    this._shelfcartdata.addincart(this.id,item,input).subscribe((data:any)=>{
       if(data.affectedRows==1)
        {
          alert('Data inserted succesfully');
@@ -53,7 +55,7 @@ export class BookforsaledetailsComponent implements OnInit {
   onAddShelf(item){
     if(this.username!='' && this.username!=null){
      //console.log(input);
-    this._shelfcartdata.addinshelf(item).subscribe((data:any)=>{
+    this._shelfcartdata.addinshelf(this.id,item).subscribe((data:any)=>{
       if(data.affectedRows==1)
        {
          alert('Data inserted succesfully');

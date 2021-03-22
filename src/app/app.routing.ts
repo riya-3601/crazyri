@@ -7,6 +7,7 @@ import { BookforsaleComponent } from './bookforsale/bookforsale.component';
 import { BookforsaledetailsComponent } from './bookforsale/bookforsaledetails/bookforsaledetails.component';
 import { DemoComponent } from './demo/demo.component';
 import { LoginComponent } from "./login/login.component";
+import { MyaccountComponent } from "./myaccount/myaccount.component";
 import { MycartComponent } from "./mycart/mycart.component";
 import { MyshelfComponent } from "./myshelf/myshelf.component";
 const arr:Routes=[
@@ -17,6 +18,7 @@ const arr:Routes=[
   {path:'bookforbarterdetails/:bookbarter_id',component:BookforbarterdetailsService},
   {path:'mycart',component:MycartComponent,canActivate:[AuthguardService]},
   {path:'myshelf',component:MyshelfComponent,canActivate:[AuthguardService]},
+  {path:'myaccount',component:MyaccountComponent,canActivate:[AuthguardService]},
   {path:'login',component:LoginComponent}
 ];
 export const routingarr=RouterModule.forRoot(arr);

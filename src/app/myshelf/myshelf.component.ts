@@ -8,11 +8,19 @@ import { ShelfcartService } from '../shelfcart.service';
   styleUrls: ['./myshelf.component.css']
 })
 export class MyshelfComponent implements OnInit {
+  id:String;
   obj:Bfs[];
   constructor(private _shelfcartdata:ShelfcartService) { }
 
   ngOnInit(): void {
-    this._shelfcartdata.getshelf().subscribe((data:Bfs[])=>{
+    this.id=localStorage.getItem('id');
+    this._shelfcartdata.getshelf(this.id).subscribe((data:Bfs[])=>{
+      this.obj=data;
+      console.log(this.obj);
+    });
+  }
+  onAddCartfromShelf(item:Bfs[]){
+    this._shelfcartdata.onAddCartfromShelf(item).subscribe((data:Bfs[])=>{
       this.obj=data;
       console.log(this.obj);
     });

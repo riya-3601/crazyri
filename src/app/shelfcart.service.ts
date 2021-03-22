@@ -13,22 +13,26 @@ export class ShelfcartService {
   url1:string='http://localhost:3000/shelfcartinshelf/';
   constructor(private _http:HttpClient) { }
 
-  getcart(){
-    return this._http.get(this.url);
+  getcart(id:String){
+    return this._http.get(this.url+id);
   }
-  getshelf(){
-    return this._http.get(this.url1);
-  }
-
-  addincart(obj:Bfs,input:number){
-    let body=JSON.stringify(obj);
-    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
-    return this._http.post(this.url+input,body,{headers:head});
-  }
-  addinshelf(obj:Bfs){
-    let body=JSON.stringify(obj);
-    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
-    return this._http.post(this.url1,body,{headers:head});
+  getshelf(id:String){
+    return this._http.get(this.url1+id);
   }
 
+  addincart(id:String,obj:Bfs,input:number){
+    let body=JSON.stringify(obj);
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.post(this.url+id+'/'+input,body,{headers:head});
+  }
+  addinshelf(id:String,obj:Bfs){
+    let body=JSON.stringify(obj);
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.post(this.url1+id,body,{headers:head});
+  }
+  onAddCartfromShelf(item){
+    let body=JSON.stringify(item);
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.put(this.url1,body,{headers:head});
+  }
 }
