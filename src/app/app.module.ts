@@ -30,6 +30,8 @@ import { BookforbartercartpopupComponent } from './bookforbarter/bookforbarterca
 import { MycartComponent } from './mycart/mycart.component';
 import { MyshelfComponent } from './myshelf/myshelf.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
+import { MybooksComponent } from './mybooks/mybooks.component';
+import { AddbookforbarterComponent } from './addbookforbarter/addbookforbarter.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { MyaccountComponent } from './myaccount/myaccount.component';
     BookforbartercartpopupComponent,
     MycartComponent,
     MyshelfComponent,
-    MyaccountComponent
+    MyaccountComponent,
+    MybooksComponent,
+    AddbookforbarterComponent
   ],
   imports: [
     BrowserModule,

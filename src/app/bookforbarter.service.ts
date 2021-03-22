@@ -11,4 +11,8 @@ export class BookforbarterService {
   getAllBookforbarterCustomer(){
     return this._http.get(this.url);
   }
+
+  getBookforbarterbyCustomerid(id:String){
+    return this._http.get(this.url+id);
+  }
 }

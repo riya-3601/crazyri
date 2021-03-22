@@ -30,7 +30,7 @@ export class DemoComponent implements OnInit {
   }
   onSearchClick(input,column){
     //console.log(input,column);
-    this._searchdata.searchBookbyISBN(input,column).subscribe((data:any)=>{
+    this._searchdata.searchBook(input,column).subscribe((data:any)=>{
       this.obj=data;
       console.log(data);
     });
