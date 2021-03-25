@@ -15,6 +15,11 @@ export class AuthguardService implements CanActivate {
       console.log('from authguard');
       return true;
     }
+    console.log(localStorage.getItem("id"+''));
+    if(localStorage.getItem("id")!='' && localStorage.getItem("id")!=null){
+      console.log('from authguard');
+      return true;
+    }
 
 
       this._routdata.navigate(['/login']);

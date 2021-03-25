@@ -30,6 +30,8 @@
                           <li><a href="my-account.html">My Account</a></li>
                           <li routerLinkActive="active"><a routerLink='/myshelf'>My Shelf</a></li>
                           <li><a href="shop-detail.html">Shop Detail</a></li>
+                          <li routerLinkActive="active"><a routerLink='/myorder'>My Order</a></li>
+
                       </ul>
                   </li>
                   <li class="nav-item"><a class="nav-link" href="service.html">Our Service</a></li>
@@ -48,7 +50,7 @@
                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
                       <mat-icon >account_circle</mat-icon></a>
                       <ul class="dropdown-menu">
-                        <li routerLinkActive="active" ><a routerLink='/myaccount'>My Account</a></li>
+                        <li routerLinkActive="active" (click)="onMyAccountClick()" ><a routerLink='/myaccount'>My Account</a></li>
                         <li routerLinkActive="active"><a routerLink='/login' >Login/Sigin</a></li>
                         <li><a (click)="onLogoutClick()">Logout</a></li>
                     </ul>

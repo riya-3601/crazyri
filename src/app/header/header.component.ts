@@ -20,6 +20,9 @@ export class HeaderComponent implements OnInit {
       this._router.navigate(['/']);
     }
   }
+  onMyAccountClick(){
+    this._router.navigate(['/myaccount']);
+  }
 
   // onBagClick(){
   //   this._router.navigate(['/mycart']);

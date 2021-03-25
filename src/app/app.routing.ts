@@ -11,6 +11,7 @@ import { MyaccountComponent } from "./myaccount/myaccount.component";
 import { MybooksComponent } from "./mybooks/mybooks.component";
 import { MycartComponent } from "./mycart/mycart.component";
 import { MyshelfComponent } from "./myshelf/myshelf.component";
+import { OrderComponent } from './order/order.component';
 const arr:Routes=[
   {path:'',component:DemoComponent},
   {path:'bookforsale/:category_id',component:BookforsaleComponent},
@@ -21,6 +22,7 @@ const arr:Routes=[
   {path:'myshelf',component:MyshelfComponent,canActivate:[AuthguardService]},
   {path:'myaccount',component:MyaccountComponent,canActivate:[AuthguardService]},
   {path:'mybooks',component:MybooksComponent,canActivate:[AuthguardService]},
+  {path:'myorder',component:OrderComponent,canActivate:[AuthguardService]},
   {path:'login',component:LoginComponent}
 ];
 export const routingarr=RouterModule.forRoot(arr);

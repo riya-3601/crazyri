@@ -1,1 +1,11 @@
-<p>myaccount works!</p>
+
+<!-- <h3>{{id}}</h3>
+<h2>{{username}}</h2> -->
+
+<div *ngFor="let item of obj">
+  <h1 style="text-align:center;">{{item.customer_name}}'s Account Details</h1>
+  <h4>Customer Name       : {{item.customer_name}}</h4>
+  <h4>Customer Email ID   : {{item.customer_emailid}}</h4>
+  <h4>Customer Mobile No. : {{item.customer_mobileno}}</h4>
+  <h4>Customer Gender     : {{item.customer_gender}}</h4>
+</div>
