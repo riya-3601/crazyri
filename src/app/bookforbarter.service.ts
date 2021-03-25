@@ -15,4 +15,8 @@ export class BookforbarterService {
   getBookforbarterbyCustomerid(id:String){
     return this._http.get(this.url+id);
   }
+
+  addBookforbarter(obj:FormData){
+    return this._http.post(this.url,obj);
+  }
 }

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from "@angular/forms";
+
 import { HttpClientModule } from "@angular/common/http";
 import { routingarr } from "./app.routing";
 import { AppComponent } from './app.component';
@@ -8,6 +9,8 @@ import { DemoComponent } from './demo/demo.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
+import { GooglePayButtonModule } from '@google-pay/button-angular';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from "@angular/material/input";
@@ -32,7 +35,12 @@ import { MyshelfComponent } from './myshelf/myshelf.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { MybooksComponent } from './mybooks/mybooks.component';
 import { AddbookforbarterComponent } from './addbookforbarter/addbookforbarter.component';
+<<<<<<< HEAD
 import { OrderComponent } from './order/order.component';
+=======
+import { CheckoutComponent } from './checkout/checkout.component';
+import { PlaceorderComponent } from './placeorder/placeorder.component';
+>>>>>>> 936d3f521539355e36cc3c7cd10225ae1c9d2d67
 
 
 @NgModule({
@@ -53,11 +61,18 @@ import { OrderComponent } from './order/order.component';
     MyaccountComponent,
     MybooksComponent,
     AddbookforbarterComponent,
+<<<<<<< HEAD
     OrderComponent
+=======
+    CheckoutComponent,
+    PlaceorderComponent
+>>>>>>> 936d3f521539355e36cc3c7cd10225ae1c9d2d67
   ],
   imports: [
+    GooglePayButtonModule,
     BrowserModule,
     FormsModule,
+
     routingarr,
     ReactiveFormsModule,
     HttpClientModule,

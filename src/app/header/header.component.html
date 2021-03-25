@@ -50,9 +50,15 @@
                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
                       <mat-icon >account_circle</mat-icon></a>
                       <ul class="dropdown-menu">
+<<<<<<< HEAD
                         <li routerLinkActive="active" (click)="onMyAccountClick()" ><a routerLink='/myaccount'>My Account</a></li>
                         <li routerLinkActive="active"><a routerLink='/login' >Login/Sigin</a></li>
                         <li><a (click)="onLogoutClick()">Logout</a></li>
+=======
+                        <li routerLinkActive="active" ><a routerLink='/myaccount'>My Account</a></li>
+                        <li *ngIf="username=='' || username==null" routerLinkActive="active"  ><a routerLink='/login' >Login/Sigin</a></li>
+                        <li *ngIf="username!='' || username!=null"><a (click)="onLogoutClick()">Logout</a></li>
+>>>>>>> 936d3f521539355e36cc3c7cd10225ae1c9d2d67
                     </ul>
                   </li>
                   <li class="side-menu" routerLinkActive="active"><a routerLink='/mycart'>
