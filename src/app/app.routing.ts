@@ -1,4 +1,5 @@
 import { Routes,RouterModule } from "@angular/router";
+import { AboutusComponent } from "./aboutus/aboutus.component";
 import { AddbookforbarterComponent } from "./addbookforbarter/addbookforbarter.component";
 import { AuthguardService } from "./authguard.service";
 import { BookforbarterComponent } from "./bookforbarter/bookforbarter.component";
@@ -7,6 +8,7 @@ import { BookforbarterdetailsService } from "./bookforbarterdetails.service";
 import { BookforsaleComponent } from './bookforsale/bookforsale.component';
 import { BookforsaledetailsComponent } from './bookforsale/bookforsaledetails/bookforsaledetails.component';
 import { CheckoutComponent } from "./checkout/checkout.component";
+import { ContactusComponent } from "./contactus/contactus.component";
 import { DemoComponent } from './demo/demo.component';
 import { LoginComponent } from "./login/login.component";
 import { MyaccountComponent } from "./myaccount/myaccount.component";
@@ -27,6 +29,8 @@ const arr:Routes=[
   {path:'mybooks',component:MybooksComponent,canActivate:[AuthguardService]},
   {path:'checkout',component:CheckoutComponent,canActivate:[AuthguardService]},
   {path:'placeorder',component:PlaceorderComponent,canActivate:[AuthguardService]},
+  {path:'contactus',component:ContactusComponent,canActivate:[AuthguardService]},
+  {path:'aboutus',component:AboutusComponent,canActivate:[AuthguardService]},
   {path:'login',component:LoginComponent}
 ];
 export const routingarr=RouterModule.forRoot(arr);

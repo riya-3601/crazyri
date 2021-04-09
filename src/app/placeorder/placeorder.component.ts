@@ -39,9 +39,16 @@ export class PlaceorderComponent implements OnInit {
       },
     ],
     merchantInfo: {
-      merchantId: '12345678901234567890',
-      merchantName: 'Demo Merchant',
+      merchantId: 'BCR2DN6T37K3DTZL',
+      merchantName: 'Booktering',
     },
+    transactionInfo: {
+      totalPriceStatus: "FINAL",
+      totalPriceLabel: "Total",
+      totalPrice: "100.00",
+      currencyCode: "INR",
+      countryCode: "IN"
+    }
   };
 
   onLoadPaymentData = (event: CustomEvent<google.payments.api.PaymentData>): void => {

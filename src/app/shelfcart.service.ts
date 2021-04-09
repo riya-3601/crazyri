@@ -40,4 +40,9 @@ export class ShelfcartService {
     let head=new HttpHeaders().set(environment.headname,environment.headvalue);
     return this._http.delete(this.url+id,{headers:head});
   }
+  multipledeleteFromCart(id:number[]){
+
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.delete(this.url+id,{headers:head});
+  }
 }

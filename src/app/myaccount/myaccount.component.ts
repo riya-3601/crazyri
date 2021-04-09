@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomerService } from '../customer.service';
+import { Cust } from '../login/cust';
 
 @Component({
   selector: 'app-myaccount',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./myaccount.component.css']
 })
 export class MyaccountComponent implements OnInit {
-
-  constructor() { }
+  id:String;
+  obj:Cust[];
+  constructor(private custdata:CustomerService) { }
 
   ngOnInit(): void {
+
+    this.id=localStorage.getItem("id");
+    this.custdata.getCustomerinfoById(this.id).subscribe((data:Cust[])=>{
+      this.obj=data;
+      console.log(this.obj);
+
+    });
   }
 
 }

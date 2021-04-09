@@ -37,6 +37,8 @@ import { MybooksComponent } from './mybooks/mybooks.component';
 import { AddbookforbarterComponent } from './addbookforbarter/addbookforbarter.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PlaceorderComponent } from './placeorder/placeorder.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { PlaceorderComponent } from './placeorder/placeorder.component';
     MybooksComponent,
     AddbookforbarterComponent,
     CheckoutComponent,
-    PlaceorderComponent
+    PlaceorderComponent,
+    ContactusComponent,
+    AboutusComponent
   ],
   imports: [
     GooglePayButtonModule,
