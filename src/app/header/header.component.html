@@ -25,9 +25,8 @@
                   <li class="dropdown">
                       <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
                       <ul class="dropdown-menu">
-                          <li><a href="car t.html">Cart</a></li>
-                          <li><a href="checkout.html">Checkout</a></li>
-                          <li><a href="my-account.html">My Account</a></li>
+                          <li routerLinkActive="active"><a routerLink='/mycart'>Cart</a></li>
+                          <li routerLinkActive="active"><a routerLink='/mycart'>Checkout</a></li>
                           <li routerLinkActive="active"><a routerLink='/myshelf'>My Shelf</a></li>
 
                       </ul>
@@ -41,16 +40,17 @@
           <!-- Start Atribute Navigation -->
           <div class="attr-nav">
               <ul>
-                  <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+
 
 
                   <li mat-icon-button class="dropdown">
                    <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
-                      <mat-icon >account_circle</mat-icon></a>
+                      <mat-icon>account_circle</mat-icon></a>
                       <ul class="dropdown-menu">
                         <li routerLinkActive="active" ><a routerLink='/myaccount'>My Account</a></li>
-                        <li *ngIf="username=='' || username==null" routerLinkActive="active"  ><a routerLink='/login' >Login/Sigin</a></li>
-                        <li *ngIf="username!='' || username!=null"><a (click)="onLogoutClick()">Logout</a></li>
+                        <li routerLinkActive="active" ><a routerLink='/myorders'>My Orders</a></li>
+                        <li *ngIf="username==null || username==null" routerLinkActive="active"  ><a routerLink='/login' >Login/Sigin</a></li>
+                        <li *ngIf="username!=null || username!=null"><a (click)="onLogoutClick()">Logout</a></li>
                     </ul>
                   </li>
                   <li class="side-menu" routerLinkActive="active"><a routerLink='/mycart'>

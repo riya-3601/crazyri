@@ -1,12 +1,16 @@
 
-<form  [formGroup]="login" (ngSubmit)="onsubmitClick()">
+
 <div class="login-wrap">
+
 	<div class="login-html">
 		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
     <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
 
 		<div class="login-form">
+
+      <!-- Loginin -->
 			<div class="sign-in-htm">
+        <form  [formGroup]="login" (ngSubmit)="onsubmitClick()">
 				<div class="group">
 					<label for="user" class="label">Emailid</label>
           <input id="user" type="text" class="input" formControlName="login_username">
@@ -15,7 +19,10 @@
 				</div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
-          <input id="pass" type="password" class="input" data-type="password" formControlName="login_password">
+          <input id="pass"  [type]="hide1 ? 'password' : 'text'" class="input" formControlName="login_password">
+          <button  matSuffix mat-icon-button type="button" >
+            <mat-icon (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
           <mat-error class="alert alert-danger" *ngIf="login.get('login_password').hasError('required') && !login.get('login_password').pristine"> Password is required</mat-error>
 				</div>
         <p class="message" *ngIf="message!=''">{{message}}</p>
@@ -27,46 +34,99 @@
 				</div>
 
 				<div class="group">
-					<button type="submit" class="button" value="Sign In">Login</button>
+					<button type="submit" class="button" value="Sign In" [disabled]="login.invalid">Login</button>
 				</div>
 				<div class="hr"></div>
-				<div class="foot-lnk">
-					<a href="#forgot">Forgot Password?</a>
-				</div>
+
+      </form>
+      <div class="foot-lnk">
+        <a *ngIf="flag2" (click)="onforgotpasswordClick()">Forgot Password?</a>
+        <div class="group">
+        <div *ngIf="flag">
+          <label for="user" class="label">Enter your Emailid</label>
+          <input  type="text" class="input" #emailid>
+          <button  class="button"  (click)="onSendClick(emailid.value)">Send</button>
+        </div>
+        <div *ngIf="flag1">
+        <div  *ngFor="let item of obj1">
+          <label>{{item.customer_name}} your password has been sent on your Emailid: {{item.customer_emailid}}</label>
+        </div>
+        </div>
+       </div>
+      </div>
 			</div>
+
+
+      <!-- Signup -->
+      <div class="sign-up-htm">
+        <form  [formGroup]="signupform" (ngSubmit)="onSignupClick()">
+        <div class="group">
+          <label for="user" class="label">Emailid</label>
+          <input id="user" type="text" class="input" formControlName="customer_emailid">
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_emailid').hasError('required') && !signupform.get('customer_emailid').pristine"> Email ID is required</mat-error>
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_emailid').hasError('email') && !signupform.get('customer_emailid').pristine"> Enter Right form of email ID</mat-error>
+        </div>
+        <div formGroupName="password_group">
+        <div class="group">
+          <label for="pass" class="label">Password</label>
+          <input  [type]="hide ? 'password' : 'text'" class="input"  formControlName="customer_password">
+          <button  matSuffix mat-icon-button type="button" >
+            <mat-icon (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('password_group').get('customer_password').hasError('required') && !signupform.get('password_group').get('customer_password').pristine"> Password is required</mat-error>
+          <!-- <mat-error class="alert alert-danger" *ngIf="signupform.get('password_group').get('customer_password').hasError('maxlength') && !signupform.get('password_group').get('customer_password').pristine"> Max 8 characters are allowed</mat-error> -->
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('password_group').get('customer_password').hasError('pattern') && !signupform.get('password_group').get('customer_password').pristine"> Must Contain 1 special character 1 Capital letter and 1 number</mat-error>
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Confirm Password</label>
+          <input id="pass" type="password" class="input" data-type="password" formControlName="customer_confirmpassword">
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('password_group').get('customer_confirmpassword').hasError('required') && !signupform.get('password_group').get('customer_confirmpassword').pristine">Confirm Password is required</mat-error>
+          <br><mat-error class="alert alert-danger" *ngIf="signupform.get('password_group').hasError('passwordMatchError') && !signupform.get('password_group').get('customer_confirmpassword').pristine">Confirm password does not match</mat-error>
+        </div>
+      </div>
+        <div class="group">
+          <label for="pass" class="label">Username</label>
+          <input id="user" type="text" class="input" formControlName="customer_name">
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_name').hasError('required') && !signupform.get('customer_name').pristine"> Username is required</mat-error>
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_name').hasError('pattern') && !signupform.get('customer_name').pristine"> Username cannot contain special characters</mat-error>
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Gender</label>
+          <!-- <input id="user" type="text" class="input" formControlName="customer_gender"> -->
+          <mat-radio-group formControlName="customer_gender" class="example-full-width">
+            <mat-radio-button value="Male" >Male</mat-radio-button>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button value="Others">Others</mat-radio-button>
+            <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_gender').hasError('required') && !signupform.get('customer_gender').pristine"> Gender is required</mat-error>
+          </mat-radio-group>
+        </div>
+        <div class="group">
+          <label for="pass" class="label">Mobile no</label>
+          <input id="user" type="text" class="input" formControlName="customer_mobileno">
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_mobileno').hasError('required') && !signupform.get('customer_mobileno').pristine"> Mobileno is required</mat-error>
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_mobileno').hasError('pattern') && !signupform.get('customer_mobileno').pristine">Only digits are allowed</mat-error>
+          <mat-error class="alert alert-danger" *ngIf="signupform.get('customer_mobileno').hasError('maxlength') && !signupform.get('customer_mobileno').pristine"> Max 10 digits are allowed</mat-error>
+        </div>
+        <div class="group">
+          <input type="submit" class="button" value="Sign Up" [disabled]="signupform.invalid">
+        </div>
+        <p class="message" *ngIf="message1!=''">{{message1}}</p>
+        <div class="hr"></div>
+        <div class="foot-lnk">
+        </div>
+      </form>
+      </div>
+
     </div>
     </div>
+
     </div>
-  </form>
-    <!-- <div class="sign-up-htm">
-      <div class="group">
-        <label for="user" class="label">Username</label>
-        <input id="user" type="text" class="input">
-      </div>
-      <div class="group">
-        <label for="pass" class="label">Password</label>
-        <input id="pass" type="password" class="input" data-type="password">
-      </div>
-      <div class="group">
-        <label for="pass" class="label">Repeat Password</label>
-        <input id="pass" type="password" class="input" data-type="password">
-      </div>
-      <div class="group">
-        <label for="pass" class="label">Email Address</label>
-        <input id="pass" type="text" class="input">
-      </div>
-      <div class="group">
-        <input type="submit" class="button" value="Sign Up">
-      </div>
-      <div class="hr"></div>
-      <div class="foot-lnk"> -->
 
 
 
 
 					<!-- <label for="tab-1">Already Member?</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div> -->
+            </div>
+</div>
+</div>
+				-->

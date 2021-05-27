@@ -15,12 +15,15 @@
 <div class="cart-box-main">
   <div class="container">
       <div class="row">
-        <div class="row" >
-          <button  mat-fab (click)="onAddBookbartClick()" color="primary" aria-label="Example icon button with a vertical three dot icon">
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
 
+          <!-- <button  mat-fab (click)="onAddBookbartClick()" color="primary" aria-label="Example icon button with a vertical three dot icon">
+            <mat-icon>add</mat-icon>
+          </button> -->
+          <div class="col-12 d-flex shopping-box"><a (click)="onAddBookbartClick()"  class="ml-auto btn hvr-hover">Add New Book</a> </div>
+
+
+
+          <br><br>
           <div class="col-lg-12">
               <div class="table-main table-responsive">
 
@@ -32,6 +35,7 @@
                               <th>Description</th>
                               <th>Status</th>
                               <th>Price</th>
+                              <th>Edit</th>
                               <th>Remove</th>
                           </tr>
                       </thead>
@@ -54,12 +58,17 @@
                               <td class="price-pr">
                                   <p>{{item.bookbarter_price| currency:'INR'}}</p>
                               </td>
+                              <td>
+                                <button mat-icon-button color="primary" (click)="onEditClick(item)" >
+                                  <mat-icon>edit</mat-icon>
+                                </button>
+                              </td>
 
                               <td class="remove-pr">
-                                  <a href="#">
-                                    <i class="fas fa-times"></i>
-                                   </a>
-                              </td>
+                                <a class="fas fa-times" (click)="onDeleteClick(item)">
+                                    <!-- <i  ></i> -->
+                                </a>
+                            </td>
                       </tbody>
                   </table>
 

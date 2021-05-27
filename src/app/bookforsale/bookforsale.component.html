@@ -8,38 +8,11 @@
                       <div class="title-left">
                           <h3>Categories</h3>
                       </div>
-                      <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
-                          <div class="list-group-collapse sub-men">
-                              <a class="list-group-item list-group-item-action" href="#sub-men1" data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Clothing <small class="text-muted">(100)</small></a>
-                              <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                  <div class="list-group">
-                                      <a href="#" class="list-group-item list-group-item-action active">T-Shirts <small class="text-muted">(50)</small></a>
-                                      <a href="#" class="list-group-item list-group-item-action">Polo T-Shirts <small class="text-muted">(10)</small></a>
-                                      <a href="#" class="list-group-item list-group-item-action">Round Neck T-Shirts <small class="text-muted">(10)</small></a>
-                                      <a href="#" class="list-group-item list-group-item-action">V Neck T-Shirts <small class="text-muted">(10)</small></a>
-                                      <a href="#" class="list-group-item list-group-item-action">Hooded T-Shirts <small class="text-muted">(20)</small></a>
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="list-group-collapse sub-men">
-                              <a class="list-group-item list-group-item-action" href="#sub-men2" data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Footwear
-          <small class="text-muted">(50)</small>
-          </a>
-                              <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                  <div class="list-group">
-                                      <a href="#" class="list-group-item list-group-item-action">Sports Shoes <small class="text-muted">(10)</small></a>
-                                      <a href="#" class="list-group-item list-group-item-action">Sneakers <small class="text-muted">(20)</small></a>
-                                      <a href="#" class="list-group-item list-group-item-action">Formal Shoes <small class="text-muted">(20)</small></a>
-                                  </div>
-                              </div>
-                          </div>
-                          <a href="#" class="list-group-item list-group-item-action"> Men  <small class="text-muted">(150) </small></a>
-                          <a href="#" class="list-group-item list-group-item-action">Accessories <small class="text-muted">(11)</small></a>
-                          <a href="#" class="list-group-item list-group-item-action">Bags <small class="text-muted">(22)</small></a>
+                      <div class="list-group list-group-collapse list-group-sm list-group-tree" *ngFor="let item of cat" [value]="item.category_id">
+                              <a class="list-group-item list-group-item-action" (click)="onCategoryClick(item)" >{{item.category_name}} </a>
+
                       </div>
                   </div>
-
-
               </div>
           </div>
 
@@ -54,21 +27,30 @@
               class="example-radio-group"
               [(ngModel)]="column">
               <mat-radio-button  class="example-radio-button" *ngFor="let col of searchcolumn" [value]="col" >
-                {{col}}
+                By-{{col}}
               </mat-radio-button>
             </mat-radio-group>
-            <div>{{column}}</div>
+            <!-- <div>{{column}}</div> -->
             <div class="search-product">
-              <form action="#">
+
                   <input  class="form-control" placeholder="Search here..." type="text"  #input >
+                  <mat-icon (click)="onClearSearchClick(input.value)" >clear</mat-icon>
                   <button (click)="onSearchClick(input.value,column)"> <i class="fa fa-search"></i> </button>
-              </form>
+
           </div>
 
 
+          <div class="col-lg-12">
+            <div class="title-all text-center">
+                <h1>Book for Sale</h1>
+                <p>Book for sale at unbelievable price</p>
+            </div>
+          </div>
+          <br><br>
+          <h2 *ngIf="obj.length==0" style="text-align: center;"><strong> Currently There are no Books in this category</strong></h2>
+          <h2 *ngIf="flag" style="text-align: center;"><strong>{{message}}</strong></h2>
 
-
-<div class="products-box" >
+<div class="products-box"*ngIf="flag==false" >
   <div class="container" >
       <div class="row special-list" >
           <div  class="col-lg-3 col-md-6 special-grid best-seller" *ngFor="let item of obj;let i=index" >
@@ -81,10 +63,9 @@
                       <div class="mask-icon">
                           <ul>
                               <li><a  (click)="onbookClick(item)"  data-toggle="tooltip" data-placement="right" title="View" ><i class="fas fa-eye"></i></a></li>
-                              <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                              <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                              <li><a (click)="onAddShelf(item)" data-toggle="tooltip" data-placement="right" title="Add to Shelf"><i class="far fa-heart"></i></a></li>
                           </ul>
-                          <a class="cart" href="#">Add to Cart</a>
+                          <a class="cart" (click)="onAddCart(item)">Add to Cart</a>
                       </div>
                   </div>
                   <div class="why-text">

@@ -1,0 +1,42 @@
+<h1 align="center"><strong>Detailed info</strong></h1>
+<div class="wishlist-box-main">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="table-main table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th>Image</th>
+                              <th>Book Title</th>
+                              <th>Book Author</th>
+                              <th>Quantity</th>
+                          </tr>
+                      </thead>
+                      <tbody >
+                          <tr *ngFor="let item of obj">
+                              <td class="thumbnail-img">
+                                  <a >
+                                    <img class="img-fluid" src="http://localhost:3000/images/bookForSale/{{item.book_image}}" alt="" />
+                                  </a>
+                              </td>
+                              <td class="name-pr">
+                                  <a >{{item.book_title}}</a>
+                              </td>
+                              <td class="name-pr">
+                                <a >{{item.book_author}}</a>
+                            </td>
+                              <td class="name-pr">
+                                  <p>{{item.orderdetails_quantity}}</p>
+                              </td>
+
+
+
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

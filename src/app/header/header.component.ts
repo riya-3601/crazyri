@@ -7,17 +7,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  username:String;
+  username:String='';
   constructor(private _router:Router) { }
 
   ngOnInit(): void {
     this.username=localStorage.getItem("username");
+    console.log('username',this.username);
   }
   onLogoutClick(){
     localStorage.removeItem("username");
+
     console.log(this.username);
-    alert('Are you sure you want to logout?');{
+    if(confirm('Are you sure you want to logout?')){
+      alert('Successfully loged out');
+      // this.username=null;
       this._router.navigate(['/']);
+
     }
   }
 

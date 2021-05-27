@@ -14,11 +14,24 @@
 </div>
 <!-- End All Title Box -->
 <!-- Start Cart  -->
-<div class="cart-box-main">
+<div class="cart-box-main" *ngIf="obj.length<=0" >
   <div class="container">
       <div class="row">
           <div class="col-lg-12">
-              <div class="table-main table-responsive">
+            <div class="title-all text-center">
+              <h1>Your Cart is empty</h1>
+              <p></p>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="cart-box-main" *ngIf="obj.length>0">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="table-main table-responsive" >
 
                   <table class="table">
                       <thead>
@@ -58,10 +71,11 @@
 
                               </td>
                               <td class="remove-pr">
-                                  <button (click)="onRemoveClick(item,item.shelfcart_id)">
-                                    <i class="fas fa-times"></i>
-                                  </button>
-                              </td>
+                                <a class="fas fa-times" (click)="onRemoveClick(item,item.shelfcart_id)">
+                                    <!-- <i  ></i> -->
+                                </a>
+                            </td>
+
                           </tr>
                       </tbody>
                   </table>
@@ -107,26 +121,40 @@
                   <div class="title-left">
                       <h3>Billing address</h3>
                   </div>
-                  <form class="needs-validation" [formGroup]="billingaddress" (ngSubmit)="onaddaddress()" novalidate>
+                  <div>
+                    <label for="state">Address type *</label>
+                    <mat-radio-group  class="example-full-width"  [(ngModel)]="radiovalue" >
+                      <br>
+                      <mat-radio-button  (change)="onRadioChange()"  [value]="add1.address_id" >{{add1.address_type}}</mat-radio-button>
+                      <button mat-icon-button color="primary" (click)="onEditClick(add1.address_id)" >
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      <div class="ml-4 mb-2 small">{{add1.address_1}},{{add1.address_2}},
+                        <br>{{add1.city}},{{add1.state}},{{add1.pincode}}</div>
+
+                        <mat-radio-button (change)="onRadioChange()"   [value]="add2.address_id">{{add2.address_type}}</mat-radio-button>
+                        <button mat-icon-button color="primary" (click)="onEditClick(add2.address_id)" >
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <div class="ml-4 mb-2 small">{{add2.address_1}},{{add2.address_2}},
+                          <br>{{add2.city}},{{add2.state}},{{add2.pincode}}</div>
+                    </mat-radio-group>
+                    <div class="col-12 d-flex shopping-box" *ngIf="cnt==1"> <button (click)="onDeselect()" class="ml-auto btn hvr-hover">on Deselect</button> </div>
+
+                  </div>
+
+
+                  <div class="col-12 d-flex shopping-box" *ngIf="cnt==0"> <button (click)="onAddaddressClick()" class="ml-auto btn hvr-hover">Add new address</button> </div>
+                  <form class="needs-validation" *ngIf="flag2" [formGroup]="billingaddress" (ngSubmit)="onaddaddress()" novalidate>
                       <div class="row">
                           <div class="col-md-10 mb-10">
                               <label for="firstName">Full name *</label>
                               <input type="text" class="form-control" id="firstName" placeholder="" formControlName="name" disabled>
                               <div class="invalid-feedback"> Valid first name is required. </div>
                           </div>
-                          <!-- <div class="col-md-6 mb-3">
-                              <label for="lastName">Last name *</label>
-                              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                              <div class="invalid-feedback"> Valid last name is required. </div>
-                          </div> -->
+
                       </div>
-                      <!-- <div class="mb-3">
-                          <label for="username">Username *</label>
-                          <div class="input-group">
-                              <input type="text" class="form-control" id="username" placeholder="" required>
-                              <div class="invalid-feedback" style="width: 100%;"> Your username is required. </div>
-                          </div>
-                      </div> -->
+
                       <div class="mb-3">
                           <label for="email">Email Address *</label>
                           <input type="email" class="form-control" id="email" placeholder="" formControlName="emailid" disabled>
@@ -134,55 +162,44 @@
                       </div>
                       <div class="mb-3">
                           <label for="address">Address 1 *</label>
-                          <input type="text" class="form-control" id="address" placeholder="" formControlName="address1" required>
-                          <div class="invalid-feedback"> Please enter your shipping address. </div>
+                          <input type="text" class="form-control" id="address" placeholder="" formControlName="address_1" required>
+                          <mat-error  *ngIf="billingaddress.get('address_1').hasError('required') && billingaddress.get('address_1').dirty">Address1 is required</mat-error>
                       </div>
                       <div class="mb-3">
                           <label for="address2">Address 2 *</label>
-                          <input type="text" class="form-control" id="address2" placeholder="" formControlName="address1"> </div>
+                          <input type="text" class="form-control" id="address2" placeholder="" formControlName="address_2">
+                          <mat-error  *ngIf="billingaddress.get('address_2').hasError('required') && billingaddress.get('address_2').dirty">Address2 is required</mat-error>
+                        </div>
                       <div class="row">
                           <div class="col-md-5 mb-3">
                               <label for="country">City *</label>
                               <select class="wide w-100" id="country" formControlName="city">
-                                <option value="Choose..." data-display="Select">Choose...</option>
-                                 <option *ngFor="let item of city" [value]="item">{{item}}</option>
+                                 <option value="item" *ngFor="let item of city" [value]="item">{{item}}</option>
                               </select>
-                           <div class="invalid-feedback"> Please select a valid country. </div>
+                              <mat-error  *ngIf="billingaddress.get('city').hasError('required') && billingaddress.get('city').dirty">City is required</mat-error>
                           </div>
                           <div class="col-md-4 mb-3">
                               <label for="state">State *</label>
                               <select class="wide w-100" id="state" formControlName="state">
-                               <option data-display="Select">Choose...</option>
-                               <option>Gujarat</option>
+
+                               <option value="Gujarat">Gujarat</option>
                               </select>
-                              <div class="invalid-feedback"> Please provide a valid state. </div>
+                              <mat-error  *ngIf="billingaddress.get('state').hasError('required') && billingaddress.get('state').dirty">State is required</mat-error>
                           </div>
                           <div class="col-md-3 mb-3">
                               <label for="zip">Pin Code *</label>
                               <input type="text" class="form-control" id="zip" placeholder="" formControlName="pincode" required>
-                              <div class="invalid-feedback"> Zip code required. </div>
+                              <mat-error  *ngIf="billingaddress.get('pincode').hasError('required') && billingaddress.get('pincode').dirty">Pincode is required</mat-error>
                           </div>
-                          <!-- <div class="col-md-4 mb-3">
-                            <label for="state">Address type *</label>
-                            <select class="wide w-100" id="state" formControlName="addtype">
-                             <option data-display="Select">Choose...</option>
-                             <option>Home</option>
-                            </select>
-                            <div class="invalid-feedback"> Please provide a valid type. </div>
-                        </div> -->
-                        <div>
-                          <label for="state">Address type *</label>
-                          <mat-radio-group formControlName="addtype" class="example-full-width">
-                            <br>
-                            <mat-radio-button value="Home">Home</mat-radio-button>
-                            <mat-radio-button value="Office">Office</mat-radio-button>
-                            <mat-radio-button value="Other">Other</mat-radio-button>
-                          </mat-radio-group>
-                        </div>
-                        <div class="col-12 d-flex shopping-box"> <button type="submit" class="ml-auto btn hvr-hover">Add address</button> </div>
                       </div>
-                  </form>
                       <hr class="mb-4">
+                      <label class="custom-control-label" for="same-address">This address will be used for only current order</label>
+                      <div class="col-12 d-flex shopping-box"> <button *ngIf="adaddresshide" type="submit" class="ml-auto btn hvr-hover">Add address</button> </div>
+                  </form>
+
+
+
+                      <!-- <hr class="mb-4">
                       <div class="custom-control custom-checkbox">
                           <input type="checkbox" class="custom-control-input" id="same-address">
                           <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
@@ -191,7 +208,7 @@
                           <input type="checkbox" class="custom-control-input" id="save-info">
                           <label class="custom-control-label" for="save-info">Save this information for next time</label>
                       </div>
-                      <hr class="mb-4">
+                      <hr class="mb-4"> -->
                 </div>
                 <div class="title" >
                   <span>Payment</span> </div>
@@ -213,7 +230,7 @@
                           </div>
 
 
-                          <div class="demo">
+                          <div class="demo" *ngIf="paymenttype=='Gpay'">
                             <google-pay-button environment="TEST" [buttonColor]="buttonColor" [buttonType]="buttonType"
                               [buttonSizeMode]="isCustomSize ? 'fill' : 'static'" [paymentRequest]="paymentRequest" [style.width.px]="buttonWidth"
                               [style.height.px]="buttonHeight" (loadpaymentdata)="onLoadPaymentData($event)"></google-pay-button>
@@ -288,7 +305,7 @@
                           <hr> </div>
                   </div>
 
-                  <div class="col-12 d-flex shopping-box"> <a (click)="onPlaceOrderClick()" class="ml-auto btn hvr-hover">Place Order</a> </div>
+                  <div class="col-12 d-flex shopping-box"> <a [disabled]="billingaddress" (click)="onPlaceOrderClick()" class="ml-auto btn hvr-hover">Place Order</a> </div>
               </div>
           </div>
       </div>

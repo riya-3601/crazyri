@@ -25,5 +25,31 @@ this._bookbartdata.getBookforbarterbyCustomerid(this.id).subscribe((data:Bookbar
   onAddBookbartClick(){
     this._router.navigate(['addbookforbarter']);
   }
+  onEditClick(item:Bookbart){
+    this._router.navigate(['editbookforbarter',item.bookbarter_id]);
+  }
+  onDeleteClick(item:Bookbart){
+   console.log(item.bookbarter_id);
+   if(confirm('Are you sure you want to remove?'))
+   {
+    this._bookbartdata.deleteBookforbarter(item.bookbarter_id).subscribe((data:any)=>{
+      console.log(data);
 
+      if(data.affectedRows==1)
+       {
+         alert('Book removed from Mybooks');
+         this.obj.splice(this.obj.indexOf(item),1);
+       }
+       else{
+         alert('Something went wrong');
+         console.log(data);
+       }
+
+     },
+
+     function(err){
+       console.log(err);
+    });
+  }
+  }
 }

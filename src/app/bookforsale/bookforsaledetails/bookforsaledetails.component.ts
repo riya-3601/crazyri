@@ -29,25 +29,44 @@ export class BookforsaledetailsComponent implements OnInit {
     });
   }
   onAddCart(item,input){
+    console.log(item.book_id);
     if(this.username!='' && this.username!=null){
     //console.log(input);
-    this._shelfcartdata.addincart(this.id,item,input).subscribe((data:any)=>{
-      if(data.affectedRows==1)
-       {
-         alert('Data inserted succesfully');
+    this._shelfcartdata.getcartByCartid(item.book_id,this.id).subscribe((data:any)=>{
+      console.log(data);
+      if (data.length>=1) {
+        alert("It is already their in cart")
+      }
+      else{
+        if(item.book_status=='Unavailable'){
+          alert("Selected book is unavailable hence cannot be added to cart");
+        }
+        else{
+        if(input!=0){
+        this._shelfcartdata.addincart(this.id,item,input).subscribe((data:any)=>{
+          if(data.affectedRows==1)
+           {
+             alert('Data inserted succesfully');
 
-       }
-       else{
-         alert('Something went wrong');
-         console.log(data);
-       }
+           }
+           else{
+             alert('Something went wrong');
+             console.log(data);
+           }
 
-     },
+         },
 
-     function(err){
-       console.log(err);
-     });
-    }
+         function(err){
+           console.log(err);
+         });
+        }
+        else{
+          alert('Quantity should be greater than 0');
+          }
+        }
+      }
+    });
+  }
     else{
       this._router.navigate(['/login']);
     }

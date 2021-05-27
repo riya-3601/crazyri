@@ -28,7 +28,7 @@ export class AddbookforbarterComponent implements OnInit {
       bookbarter_id:new FormControl(null,[Validators.required]),
       bookbarter_title:new FormControl(null,[Validators.required]),
       bookbarter_author:new FormControl(null,[Validators.required]),
-      bookbarter_description:new FormControl(null,[Validators.required,Validators.maxLength(200)]),
+      bookbarter_description:new FormControl(null,[Validators.required,Validators.maxLength(400)]),
       bookbarter_status:new FormControl(null,[Validators.required]),
       bookbarter_price:new FormControl(null,[Validators.required,Validators.pattern('[0-9]*')]),
       bookbarter_image:new FormControl(null),
@@ -84,8 +84,17 @@ export class AddbookforbarterComponent implements OnInit {
   onClearDescClick(){
     this.bookforbarteradd.get('bookbarter_description').reset('');
   }
-  onFileAdd(value){
-    this.selectedfile=<File>value.target.files[0];
-   }
+  imageFlag:boolean=true;
+ onFileAdd(value){
+  this.selectedfile=<File>value.target.files[0];
+  if(this.selectedfile.type=='image/png'|| this.selectedfile.type=='image/jpg'|| this.selectedfile.type=='image/jpeg'){
+    this.imageFlag=true;
+  }
+  else{
+    this.imageFlag=false;
+    this.selectedfile=null;
+  }
+  console.log(this.selectedfile);
+ }
 
 }

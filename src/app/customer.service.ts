@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders} from "@angular/common/http";
 import { environment } from "../environments/environment";
+import { Cust } from './login/cust';
 
 
 @Injectable({
@@ -13,5 +14,10 @@ export class CustomerService {
 
   getCustomerinfoById(id:String){
     return this._http.get(this.url+id);
+  }
+  editCustomer(obj:Cust){
+    let body=JSON.stringify(obj);
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.put(this.url,body,{headers:head});
   }
 }

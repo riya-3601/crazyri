@@ -2,8 +2,8 @@
  <div id="slides-shop" class="cover-slides">
   <ul class="slides-container">
       <li class="text-center">
-          <img src="assets\images\bookslider4.jpg" alt="">
-          <!-- <div class="container">
+          <img src="assets\images\home.jpg" alt="">
+          <!-- <div class="container">bookslider4.jpg
               <div class="row">
                   <div class="col-md-12">
                       <h1 class="m-b-20"><strong>Welcome To <br> Thewayshop</strong></h1>
@@ -25,15 +25,57 @@
     class="example-radio-group"
     [(ngModel)]="column">
     <mat-radio-button class="example-radio-button" *ngFor="let col of searchcolumn" [value]="col">
-      {{col}}
+      By-{{col}}
     </mat-radio-button>
   </mat-radio-group>
-  <div>{{column}}</div>
+  <!-- <div>{{column}}</div> -->
   <div class="search-product">
     <input  class="form-control" placeholder="Search here..." type="text"  #input >
-        <button (click)="onSearchClick(input.value,column)"> <i class="fa fa-search"></i> </button>
+    <mat-icon  (click)="onClearSearchClick()" >clear</mat-icon>
+    <!-- <button class="example-button-row" mat-icon-button color="primary" (click)="onClearSearchClick(input.value)" >
+      <mat-icon>clear</mat-icon>
+    </button> -->
+    <!-- <td class="remove-pr">
+      <a class="fas fa-times" (click)="onClearSearchClick(input.value)">
+      </a>
+  </td> -->
+      <button (click)="onSearchClick(input.value,column)"> <i class="fa fa-search"></i> </button>
+
   </div>
  </div>
+
+ <h2  *ngIf="temp1" style="text-align: center;"><strong>{{message}}</strong></h2>
+
+  <div class="container" *ngIf="temp1==false" >
+      <div class="row special-list" >
+          <div  class="col-lg-3 col-md-6 special-grid best-seller" *ngFor="let item of obj2;let i=index" >
+              <div class="products-single fix" >
+                  <div class="box-img-hover" >
+                      <div class="type-lb">
+                          <p class="sale">Sale</p>
+                      </div>
+                      <img src="http://localhost:3000/images/bookForSale/{{item.book_image}}" class="img-fluid" alt="Image">
+                      <div class="mask-icon">
+                          <ul>
+                              <li><a  (click)="onbookClick(item)"  data-toggle="tooltip" data-placement="right" title="View" ><i class="fas fa-eye"></i></a></li>
+                              <li><a (click)="onAddShelf(item)" data-toggle="tooltip" data-placement="right" title="Add to Shelf"><i class="far fa-heart"></i></a></li>
+                          </ul>
+                          <a class="cart" (click)="onAddCart(item)">Add to Cart</a>
+                      </div>
+                  </div>
+                  <div class="why-text">
+                    <div class="why-text">
+                      <h4>{{item.book_title}}</h4>
+                      <h5>{{item.book_price |currency:'INR'}}</h5>
+                      <h5>{{item.book_author}}</h5>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
 
     <!-- Start Categories  -->
 
@@ -61,6 +103,7 @@
     </div> -->
     <!-- End Categories -->
 
+
     <div class="categories-shop" >
       <div class="container">
     <div class="categories-shop">
@@ -74,9 +117,11 @@
               <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6" *ngFor="let item of obj" [value]="item.category_id" >
                   <div class="shop-cat-box">
                       <img class="img-fluid" src="http://localhost:3000/images/category/{{item.category_image}}" alt="" />
-                      <a class="btn hvr-hover" (click)="onCategoryClick(item)" >{{item.category_name}}</a>
+                      <a class="btn hvr-hover" (click)="onCategoryClick(item)" ></a>
                   </div>
               </div>
+              <div class="col-12 d-flex shopping-box"><a (click)="onClickAllCategories()" *ngIf="flag" class="ml-auto btn hvr-hover">All Categories</a> </div>
+
           </div>
       </div>
     </div>
@@ -86,37 +131,49 @@
 
 
     <!-- Start Products  -->
-    <div class="products-box">
-        <div class="container">
 
-            <div class="row special-list">
-                <div  class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="../../assets/images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $7.79</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <!-- End Products  -->
+
+    <div class="col-lg-12">
+      <div class="title-all text-center">
+          <h1>Book for Sale</h1>
+          <p>Book for sale at unbelievable price</p>
+      </div>
+  </div>
+
+    <div class="products-box" >
+      <div class="container" >
+          <div class="row special-list" >
+              <div  class="col-lg-3 col-md-6 special-grid best-seller" *ngFor="let item of obj1;let i=index" >
+                  <div class="products-single fix" >
+                      <div class="box-img-hover" >
+                          <div class="type-lb">
+                              <p class="sale">Sale</p>
+                          </div>
+                          <img src="http://localhost:3000/images/bookForSale/{{item.book_image}}" class="img-fluid" alt="Image">
+                          <div class="mask-icon">
+                              <ul>
+                                  <li><a  (click)="onbookClick(item)"  data-toggle="tooltip" data-placement="right" title="View" ><i class="fas fa-eye"></i></a></li>
+                                  <li><a (click)="onAddShelf(item)" data-toggle="tooltip" data-placement="right" title="Add to Shelf"><i class="far fa-heart"></i></a></li>
+                              </ul>
+                              <a class="cart" (click)="onAddCart(item)">Add to Cart</a>
+                          </div>
+                      </div>
+                      <div class="why-text">
+                        <div class="why-text">
+                          <h4>{{item.book_title}}</h4>
+                          <h5>{{item.book_price |currency:'INR'}}</h5>
+                          <h5>{{item.book_author}}</h5>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-12 d-flex shopping-box"><a (click)="onClickAllBooks()" *ngIf="flag2" class="ml-auto btn hvr-hover">Show all books</a>
+              <a (click)="onClickAllBooks()" *ngIf="flag2==false" class="ml-auto btn hvr-hover">Show less</a> </div>
+          </div>
+      </div>
+    </div>
+
 
     <!-- Start Blog  -->
     <!-- <div class="latest-blog">

@@ -34,5 +34,54 @@
                                 <h4>Contact info:</h4>
                                 <p>{{item.customer_emailid}}</p>
                     </div>
+                    <div class="search-product">
+                      <input  class="form-control" placeholder="Give your Review" type="text"#input>
+                      <button (click)="onPostClick(input.value)"> <i >POST</i> </button>
+                    </div>
                 </div>
+                <div class="col-lg-12">
+                  <div class="title-all text-center">
+                      <h2><strong>Book Reviews</strong></h2>
+                      <p></p>
+                  </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h2><strong>My Reviews</strong></h2>
+                    <p></p>
+                </div>
+            </div>
+              <div class="col-sm-6 col-lg-10" *ngFor="let item of obj2">
+                <div class="service-block-inner">
+                    <h4><strong>{{item.customer_name}}</strong></h4>
+                    <p>{{item.bookreview_date|date:"MM/dd/yy"}}-{{item.bookreview_description}}
+                    <button mat-icon-button color="primary" (click)="onEditBookreview(item.bookreview_id)" >
+                     <mat-icon >edit</mat-icon>
+                        </button>
+                    <button  mat-icon-button color="primary" (click)="onDeleteBookreview(item)" >
+                      <mat-icon >clear</mat-icon>
+                            </button>
+                          </p>
+                          <form  [formGroup]="bookreviewadd" (ngSubmit)="onPostClick1()">
+                          <div class="search-product" *ngIf="flag">
+                            <input  class="form-control" placeholder="Edit your Review" type="text" formControlName="bookreview_description">
+                            <button type="submit" > <i >POST</i> </button>
+                          </div>
+                        </form>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="title-all text-center">
+                      <h2><strong>Other Reviews</strong></h2>
+                      <p></p>
+                  </div>
+              </div>
+
+                    <div class="col-sm-6 col-lg-10" *ngFor="let item of obj1">
+                        <div class="service-block-inner">
+                            <h4><strong>{{item.customer_name}}</strong></h4>
+                            <p>{{item.bookreview_date|date:"MM/dd/yy"}}-{{item.bookreview_description}}</p>
+
+                        </div>
+                    </div>
             </div>

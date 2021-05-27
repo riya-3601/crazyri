@@ -19,6 +19,9 @@ export class ShelfcartService {
   getshelf(id:String){
     return this._http.get(this.url1+id);
   }
+  getcartByCartid(book_id:number,customer_id:String){
+    return this._http.get(this.url+book_id+'/'+customer_id);
+  }
 
   addincart(id:String,obj:Bfs,input:number){
     let body=JSON.stringify(obj);
@@ -35,14 +38,18 @@ export class ShelfcartService {
     let head=new HttpHeaders().set(environment.headname,environment.headvalue);
     return this._http.put(this.url1,body,{headers:head});
   }
+  deleteFromShelf(id:number){
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.delete(this.url1+id,{headers:head});
+  }
 
   deleteFromCart(id:number){
     let head=new HttpHeaders().set(environment.headname,environment.headvalue);
     return this._http.delete(this.url+id,{headers:head});
   }
-  multipledeleteFromCart(id:number[]){
-
+  multipledeleteFromCart(obj:Bfs[]){
+    let body=JSON.stringify(obj);
     let head=new HttpHeaders().set(environment.headname,environment.headvalue);
-    return this._http.delete(this.url+id,{headers:head});
+    return this._http.post(this.url,obj,{headers:head});
   }
 }

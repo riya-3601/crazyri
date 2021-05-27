@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpHeaders } from "@angular/common/http";
-import { environment } from "../environments/environment";
+import { environment } from "src/environments/environment";
 
 import { Bfs } from './bookforsale/bfs';
 
@@ -8,9 +8,13 @@ import { Bfs } from './bookforsale/bfs';
   providedIn: 'root'
 })
 export class OrderdetailsService {
-  url:string='http://localhost:3000/orderdetails/';
+  url:string='http://localhost:3000/multipleorderdetails/';
+  url1:string='http://localhost:3000/orderdetails/';
   constructor(private _http:HttpClient) { }
 
+  getAllOrderdetails(id:number){
+    return this._http.get(this.url1+id);
+  }
 
 
   addOrderdetails(obj:Bfs[],order_id:number){

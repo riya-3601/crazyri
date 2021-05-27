@@ -14,5 +14,9 @@ export class MybooksService {
   getBookforbarterbyCustomerid(id:String){
     return this._http.get(this.url+id);
   }
+  deleteBookforbarter(id:number){
+    let head=new HttpHeaders().set(environment.headname,environment.headvalue);
+    return this._http.delete(this.url+id,{headers:head});
+  }
 
 }

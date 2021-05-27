@@ -1,28 +1,44 @@
  <!--search-->
+
  <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
   <mat-radio-group
   aria-labelledby="example-radio-group-label"
     class="example-radio-group"
     [(ngModel)]="column">
     <mat-radio-button class="example-radio-button" *ngFor="let col of searchcolumn" [value]="col">
-      {{col}}
+      By-{{col}}
     </mat-radio-button>
   </mat-radio-group>
-  <div>{{column}}</div>
+  <!-- <div>{{column}}</div> -->
   <div class="search-product">
     <input  class="form-control" placeholder="Search here..." type="text"  #input >
+    <mat-icon (click)="onClearSearchClick(input.value)" >clear</mat-icon>
         <button (click)="onSearch1Click(input.value,column)"> <i class="fa fa-search"></i> </button>
   </div>
-<button (click)="onMyBooksClick()">MyBOOKS</button>
+<!-- <button (click)="onMyBooksClick()">MyBOOKS</button> -->
  </div>
-
+ <div class="row">
+  <div class="col-xl-7 col-lg-7 col-sm-20 col-xs-30">
+      <div class="special-menu text-center">
+          <div class="button-group filter-button-group">
+              <button (click)="onMyBooksClick()">MyBOOKS</button>
+          </div>
+        </div>
+        </div>
+        </div>
 <!-- Start Shop Page  -->
-<div class="shop-box-inner">
+
+<div class="col-lg-12">
+  <div class="title-all text-center">
+      <h1>Books for Bartering</h1>
+      <p>Exchange your books</p>
+  </div>
+</div>
+<br><br>
+<h2 *ngIf="flag" style="text-align: center;"><strong>{{message}}</strong></h2>
+<div class="shop-box-inner" >
   <div class="container">
-
-
-
-<div class="products-box"  >
+<div class="products-box"*ngIf="flag==false">
     <div class="container" >
         <div class="row special-list" >
             <div  class="col-lg-3 col-md-6 special-grid best-seller" *ngFor="let item of obj;let i=index" >
@@ -36,7 +52,7 @@
                             <ul>
                                 <li><a (click)="onBookClick(item)" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
 
-                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+
                             </ul>
 
                         </div>

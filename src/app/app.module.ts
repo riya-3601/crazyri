@@ -31,6 +31,7 @@ import { BookforbarterComponent } from './bookforbarter/bookforbarter.component'
 import { BookforbarterdetailsComponent } from './bookforbarter/bookforbarterdetails/bookforbarterdetails.component';
 import { BookforbartercartpopupComponent } from './bookforbarter/bookforbartercartpopup/bookforbartercartpopup.component';
 import { MycartComponent } from './mycart/mycart.component';
+import { OrderComponent } from './order/order.component';
 import { MyshelfComponent } from './myshelf/myshelf.component';
 import { MyaccountComponent } from './myaccount/myaccount.component';
 import { MybooksComponent } from './mybooks/mybooks.component';
@@ -39,6 +40,9 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { PlaceorderComponent } from './placeorder/placeorder.component';
 import { ContactusComponent } from './contactus/contactus.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
+import { EditbookforbarterComponent } from './editbookforbarter/editbookforbarter.component';
+import { EditaddressComponent } from './editaddress/editaddress.component';
+import { OrderpopupComponent } from './order/orderpopup/orderpopup.component';
 
 
 @NgModule({
@@ -62,7 +66,11 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     CheckoutComponent,
     PlaceorderComponent,
     ContactusComponent,
-    AboutusComponent
+    OrderComponent,
+    AboutusComponent,
+    EditbookforbarterComponent,
+    EditaddressComponent,
+    OrderpopupComponent
   ],
   imports: [
     GooglePayButtonModule,
