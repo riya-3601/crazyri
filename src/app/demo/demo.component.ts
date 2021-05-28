@@ -117,8 +117,8 @@ export class DemoComponent implements OnInit {
     this._router.navigate(['/bookforsaledetail',item.book_id]);
   }
   onCategoryClick(item:Cat){
-    console.log(item.category_id);
-    this._router.navigate(['/bookforsale',item.category_id]);
+    console.log(item.category_id,item.category_name);
+    this._router.navigate(['/bookforsale',item.category_id,item.category_name]);
 
   }
 

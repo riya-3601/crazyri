@@ -24,7 +24,7 @@ import { PlaceorderComponent } from "./placeorder/placeorder.component";
 const arr:Routes=[
   {path:'',component:DemoComponent},
 
-  {path:'bookforsale/:category_id',component:BookforsaleComponent},
+  {path:'bookforsale/:category_id/:category_name',component:BookforsaleComponent},
   {path:'bookforsaledetail/:book_id',component:BookforsaledetailsComponent},
   {path:'bookforbarter',component:BookforbarterComponent},
   {path:'addbookforbarter',component:AddbookforbarterComponent},

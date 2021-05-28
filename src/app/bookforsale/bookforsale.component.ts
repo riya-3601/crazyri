@@ -20,6 +20,7 @@ export class BookforsaleComponent implements OnInit {
   obj:Bfs[]=[];
   cat:Cat[]=[];
   category_id:number=1;
+  category_name:String='';
   column:string='title';
   flag:boolean=false;
   message:string='';
@@ -36,6 +37,7 @@ export class BookforsaleComponent implements OnInit {
     this.id=localStorage.getItem("id");
     this._actRoute.params.subscribe((data)=>{
       this.category_id=data.category_id;
+      this.category_name=data.category_name;
       console.log(this.category_id);
       this._bfsdata.getBookByCategoryID(this.category_id).subscribe((data:Bfs[])=>{
         this.obj=data;
@@ -83,7 +85,7 @@ export class BookforsaleComponent implements OnInit {
   }
   onCategoryClick(item:Cat){
     console.log('Category evnt called');
-    this._router.navigate(['/bookforsale',item.category_id]);
+    this._router.navigate(['/bookforsale',item.category_id,item.category_name]);
 
   }
   onAddCart(item){
