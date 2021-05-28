@@ -26,7 +26,7 @@ add:Adress[]=[];
     this.accountform=new FormGroup({
       customer_id:new FormControl(null),
       customer_emailid:new FormControl(null,[Validators.required,Validators.email]),
-      customer_password:new FormControl(null,[Validators.required,Validators.maxLength(8)]),
+      customer_password:new FormControl(null,[Validators.required,Validators.pattern('^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+*!=]).*$')]),
       customer_name:new FormControl(null,[Validators.required]),
       customer_gender:new FormControl(null,[Validators.required]),
       customer_mobileno:new FormControl(null,[Validators.required,Validators.pattern('[0-9]*'),Validators.maxLength(10)]),

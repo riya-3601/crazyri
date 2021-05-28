@@ -55,7 +55,10 @@ export class LoginComponent implements OnInit {
       if(data.length==1){
         if(this.obj[0].customer_type==1){
           localStorage.setItem("username",this.obj[0].customer_emailid);
+          localStorage.setItem("name",this.obj[0].customer_name);
           localStorage.setItem("id",this.obj[0].customer_id+'');
+
+          alert('Welcome '+this.obj[0].customer_name+' to Booktering.com');
           this._router.navigate(['/']);
 
         }

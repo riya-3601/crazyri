@@ -9,11 +9,13 @@
               <i class="fa fa-bars"></i>
           </button>
               <a class="logomade" href="index.html"><img src="../../assets/images/logob1.png" class="logo" alt=""></a>
+
           </div>
           <!-- End Header Navigation -->
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar-menu">
+            <div *ngIf="name!=''">Welcome, {{name}}</div>
               <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                   <li  routerLinkActive="active" [routerLinkActiveOptions]='{exact:true}'><a class="nav-link" routerLink='/'>Home</a></li>
 
@@ -55,7 +57,7 @@
                   </li>
                   <li class="side-menu" routerLinkActive="active"><a routerLink='/mycart'>
                     <i class="fa fa-shopping-bag"></i>
-                       <span class="badge">3</span>
+                       <span class="badge"></span>
                    </a></li>
               </ul>
           </div>
